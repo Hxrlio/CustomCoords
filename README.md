@@ -5,7 +5,7 @@ Custom Coords Client-Side Minecraft Mod.
 No Questions have been asked.
 
 ## Where Mod?
-(link will appear here)
+[Modrinth page](https://modrinth.com/project/customcoords) (Unreleased)
 
 ## Where complain Mod broken?
 [Custom Coords Issues](https://github.com/Hxrlio/CustomCoords/issues)
@@ -17,7 +17,7 @@ Currently WIP for Forge 1.18.2 only.
 Client Side only, has no function server side.
 
 ## Development?
-Extremely casual. Expect nothing. Currently in pre-development stages.
+Extremely casual. Expect nothing. Currently in alpha development stages.
 
 ## Goal?
 A coordinates mod that gives you control over the meaning of those funny little numbers.
