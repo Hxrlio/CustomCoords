@@ -27,7 +27,7 @@ XZ coords being measured by the metre is unnecessarily precise in many cases, so
 This mod is able to translate coords written in chat (by a sane person) and some other mod's coord sharing capabilities (notably, Xaero's) to whatever system you're using. If some coords aren't picked up, you can use /coordtranslate <coords> to get them in your system, and /coordsshare <coords> (coords is optional, it will share your current coords otherwise) to send out coordinates from your system in their true in-game form.
 
 ## Current stage?
-Currently, nothing. It does not yet exist.
+Currently unreleased. You can clone it off the github though.
 
 #### Who are you?
 I am Hxrl. I made Yellow Pack, a basic modpack I drew up because my then-girlfriend wanted to play Minecraft. I made a minor contribution to C4's Vein Mining, but that's where my connection to the modding scene ends. Essentially, I'm not anyone important. Just an autistic guy who will grew up with, learned how to socialise from, and obsessed over this game. I am passionate, opinionated, and outspoken. Please feel free to chat to me @ hxrl on Discord, or wherever else you can find me.
