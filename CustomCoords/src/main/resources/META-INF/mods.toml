@@ -1,0 +1,40 @@
+modLoader="javafml" #M
+loaderVersion="[40,)" #M
+license="GNU GPL v3, https://www.gnu.org/licenses/gpl-3.0.en.html" #M
+#issueTrackerURL="https://github.com/Hxrlio/CustomCoords/issues" #O
+
+[[mods]] #M
+modId="customcoords" #M
+version="${file.jarVersion}" #M
+displayName="Custom Coords" #M
+#updateJSONURL="NONE" #O
+#displayURL="https://modrinth.WIP/" #O
+logoFile="CustomCoords.png" #O
+#credits="" #O
+authors="Hxrl" #O
+
+# MATCH_VERSION = BOTH
+# IGNORE_SERVER_VERSION = SERVER
+# IGNORE_ALL_VERSION = CLIENT
+# NONE = OTHER IExtensionPoint.DisplayTest for more
+displayTest="IGNORE_ALL_VERSION" # MATCH_VERSION is default (#O)
+
+description='''
+A mod for customising the client side value of your coordinates whilst maintaining the ability to communicate them.
+''' #M
+
+[[dependencies.customcoords]]
+    modId="forge" #M
+    mandatory=true #M
+    versionRange="[40,)" #M
+    # BEFORE / AFTER / NONE
+    ordering="AFTER" #M
+    # BOTH / CLIENT / SERVER
+    side="CLIENT" #M
+
+[[dependencies.customcoords]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.2,1.19)"
+    ordering="AFTER"
+    side="BOTH"
