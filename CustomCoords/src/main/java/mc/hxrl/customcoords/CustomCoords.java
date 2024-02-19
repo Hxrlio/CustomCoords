@@ -1,11 +1,15 @@
 package mc.hxrl.customcoords;
 
 import com.mojang.logging.LogUtils;
-
+import mc.hxrl.customcoords.config.Config;
 import mc.hxrl.customcoords.hud.CoordHudOverlay;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -21,6 +25,8 @@ public class CustomCoords
     public static final Logger LOGGER = LogUtils.getLogger();
     
     public static CoordHudOverlay OVERLAY;
+    
+    public static boolean CHECK_ITEM = false;
 
     public CustomCoords()
     {
@@ -32,17 +38,19 @@ public class CustomCoords
         MinecraftForge.EVENT_BUS.register(this);
         
         OVERLAY = new CoordHudOverlay();
+        
+        ModLoadingContext.get().registerConfig(Type.CLIENT, Config.CONFIG, "customcoords.toml");
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
-        // LOGGER.info("Working, Hxrl");
+    private void setup(final FMLCommonSetupEvent event) {
+    	
     }
     
     private void setupClient(final FMLClientSetupEvent event) {
     	
-    	// LOGGER.info("pogger.info");
-    	
+    	if (!Registry.ITEM.getOptional(new ResourceLocation(Config.REQ_ITEM.get())).isEmpty()) {
+    		CHECK_ITEM = true;
+    	}
     	
     }
 

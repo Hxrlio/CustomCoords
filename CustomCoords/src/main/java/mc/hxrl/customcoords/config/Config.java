@@ -6,17 +6,26 @@ public class Config {
 	
 	public static final ForgeConfigSpec CONFIG;
 	
-	public static ForgeConfigSpec.BooleanValue showXZ;
-	public static ForgeConfigSpec.BooleanValue showY;
-	public static ForgeConfigSpec.BooleanValue xzChunk;
-	public static ForgeConfigSpec.IntValue yOffset;
-	public static ForgeConfigSpec.ConfigValue<String> reqItem;
-	public static ForgeConfigSpec.ConfigValue<String> xPreText;
-	public static ForgeConfigSpec.ConfigValue<String> yPreText;
-	public static ForgeConfigSpec.ConfigValue<String> zPreText;
-	public static ForgeConfigSpec.ConfigValue<String> xPostText;
-	public static ForgeConfigSpec.ConfigValue<String> yPostText;
-	public static ForgeConfigSpec.ConfigValue<String> zPostText;
+	public static ForgeConfigSpec.BooleanValue SHOW_XZ; // added
+	public static ForgeConfigSpec.BooleanValue SHOW_Y; // added
+	public static ForgeConfigSpec.BooleanValue XZ_CHUNK; // added
+	public static ForgeConfigSpec.BooleanValue XZ_NETHER; // added
+	public static ForgeConfigSpec.IntValue X_OFFSET; // added
+	public static ForgeConfigSpec.IntValue Y_OFFSET; // added
+	public static ForgeConfigSpec.IntValue Z_OFFSET; // added
+	public static ForgeConfigSpec.IntValue POS_X; // added
+	public static ForgeConfigSpec.IntValue POS_Y; // added
+	public static ForgeConfigSpec.IntValue COLOR_PRE; // added
+	public static ForgeConfigSpec.IntValue COLOR_COORD; // added
+	public static ForgeConfigSpec.IntValue COLOR_POST; // added
+	public static ForgeConfigSpec.ConfigValue<String> REQ_ITEM; // implemented
+	public static ForgeConfigSpec.ConfigValue<String> X_PRE_TEXT; // added
+	public static ForgeConfigSpec.ConfigValue<String> Y_PRE_TEXT; // added
+	public static ForgeConfigSpec.ConfigValue<String> Z_PRE_TEXT; // added
+	public static ForgeConfigSpec.ConfigValue<String> X_POST_TEXT; // added
+	public static ForgeConfigSpec.ConfigValue<String> Y_POST_TEXT; // added
+	public static ForgeConfigSpec.ConfigValue<String> Z_POST_TEXT; // added
+	public static ForgeConfigSpec.ConfigValue<String> COORD_PREC; // added
 	
 	static {
 		
@@ -28,7 +37,40 @@ public class Config {
 	
 	private static void setup(ForgeConfigSpec.Builder builder) {
 		
+		builder.push("Required item for coords to show (blank = none)");
+		REQ_ITEM = builder.define("Item", "minecraft:compass");
+		builder.pop();
 		
+		builder.push("Which coords should be displayed?");
+		SHOW_XZ = builder.define("X & Z", true);
+		SHOW_Y = builder.define("Y", true);
+		builder.pop();
 		
+		builder.push("Where should they be on the screen?");
+		// maybe add a way to this better later.
+		POS_X = builder.defineInRange("X", 5, 0, 470);
+		POS_Y = builder.defineInRange("Y", 5, 0, 249);
+		builder.pop();
+		
+		builder.push("Customise coord values");
+		XZ_CHUNK = builder.define("XZ by Chunk? (opposed to by Block)", false);
+		XZ_NETHER = builder.define("XZ in Nether refers to Overworld?", false);
+		X_OFFSET = builder.defineInRange("X offset", 0, -30000000, 30000000);
+		Z_OFFSET = builder.defineInRange("Z offset", 0, -30000000, 30000000);
+		Y_OFFSET = builder.defineInRange("Y offset", -63, -256, 64);
+		builder.pop();
+		
+		builder.push("Customise coord visuals");
+		COORD_PREC = builder.define("Digit display of coords", "0");
+		COLOR_PRE = builder.defineInRange("Color of text before each coordinate", 16777215, 0, 16777215);
+		COLOR_COORD = builder.defineInRange("Color of coordinates", 16777215, 0, 16777215);
+		COLOR_POST = builder.defineInRange("Color of text after each coordinate", 16777215, 0, 16777215);
+		X_PRE_TEXT = builder.define("Text before X", "");
+		Y_PRE_TEXT = builder.define("Text before Y", "");
+		Z_PRE_TEXT = builder.define("Text before Z", "");
+		X_POST_TEXT = builder.define("Text after X", " ");
+		Y_POST_TEXT = builder.define("Text after Y", " ");
+		Z_POST_TEXT = builder.define("Text after Z", "");
+		builder.pop();
 	}
 }
