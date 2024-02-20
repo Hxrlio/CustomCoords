@@ -26,7 +26,7 @@ public class ClientEvents {
 			String chat = e.getMessage().getString();
 			CustomCoords.LOGGER.info(chat);
 			Pattern pattern = Pattern.compile("0");
-			pattern.matcher(chat);
+			// pattern.matcher(chat);
 		}
 	}
 }
