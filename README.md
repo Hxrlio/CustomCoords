@@ -30,4 +30,4 @@ This mod is able to translate coords written in chat (by a sane person) and some
 Currently unreleased. You can clone it off the github though.
 
 #### Who are you?
-I am Hxrl. I made Yellow Pack, a basic modpack I drew up because my then-girlfriend wanted to play Minecraft. I made a minor contribution to C4's Vein Mining, but that's where my connection to the modding scene ends. Essentially, I'm not anyone important. Just an autistic guy who will grew up with, learned how to socialise from, and obsessed over this game. I am passionate, opinionated, and outspoken. Please feel free to chat to me @ hxrl on Discord, or wherever else you can find me.
+I am Hxrl. I made Yellow Pack, a basic modpack I drew up because my then-girlfriend wanted to play Minecraft. I made a minor contribution to C4's Vein Mining, but that's where my connection to the modding scene ends. Essentially, I'm not anyone important. Just an autistic guy who will grew up with, learned how to socialise from, and obsessed over this game. Please feel free to chat to me @ hxrl on Discord, or wherever else you can find me.
