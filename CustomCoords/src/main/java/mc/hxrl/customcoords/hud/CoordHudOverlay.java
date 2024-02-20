@@ -12,7 +12,10 @@ import net.minecraft.world.entity.Entity;
 public class CoordHudOverlay extends GuiComponent {
 	
 	private static boolean found;
+	private static String shownY;
 	private static String reqItem = Config.REQ_ITEM.get();
+	private static boolean showY = Config.SHOW_Y.get();
+	private static boolean showXZ = Config.SHOW_XZ.get();
 	private static DecimalFormat df = new DecimalFormat(Config.COORD_PREC.get());
 	
 	public void renderOverlay(PoseStack ps) {
@@ -51,10 +54,20 @@ public class CoordHudOverlay extends GuiComponent {
 			return;
 		}
 		
-		double y = player.getY();
-		String shownY = df.format(y - 63);
+		if (showY) {
+			double y = player.getY();
+			shownY = df.format(y - 63);
+		} else {
+			shownY = "";
+		}
 		
-		client.font.drawShadow(ps, shownY, 5, 5, 16777215);
+		if (showXZ) {
+			
+		}
+		
+		String text = shownY;
+		
+		client.font.drawShadow(ps, text, 5, 5, 16777215);
 		
 	}
 }

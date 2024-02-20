@@ -7,7 +7,7 @@ public class Config {
 	public static final ForgeConfigSpec CONFIG;
 	
 	public static ForgeConfigSpec.BooleanValue SHOW_XZ; // added
-	public static ForgeConfigSpec.BooleanValue SHOW_Y; // added
+	public static ForgeConfigSpec.BooleanValue SHOW_Y; // implemented
 	public static ForgeConfigSpec.BooleanValue XZ_CHUNK; // added
 	public static ForgeConfigSpec.BooleanValue XZ_NETHER; // added
 	public static ForgeConfigSpec.IntValue X_OFFSET; // added
