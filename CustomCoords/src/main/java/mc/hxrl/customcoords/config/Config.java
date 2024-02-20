@@ -26,6 +26,8 @@ public class Config {
 	public static ForgeConfigSpec.ConfigValue<String> Y_POST_TEXT; // implemented
 	public static ForgeConfigSpec.ConfigValue<String> Z_POST_TEXT; // implemented
 	public static ForgeConfigSpec.ConfigValue<String> COORD_PREC; // implemented
+	public static ForgeConfigSpec.ConfigValue<String> POS_HORIZONTAL; // added
+	public static ForgeConfigSpec.ConfigValue<String> POS_VERTICAL; // added
 	
 	static {
 		
@@ -47,9 +49,12 @@ public class Config {
 		builder.pop();
 		
 		builder.push("Where should they be on the screen?");
-		// maybe add a way to this better later.
-		POS_X = builder.defineInRange("X", 5, 0, 470);
-		POS_Y = builder.defineInRange("Y", 5, 0, 249);
+		builder.comment("Relative to left or right of screen?");
+		POS_HORIZONTAL = builder.define("Valid Inputs: LEFT / RIGHT", "LEFT");
+		builder.comment("Relative to top or bottom of screen?");
+		POS_VERTICAL = builder.define("Valid Inputs: TOP / BOTTOM", "TOP");
+		POS_X = builder.defineInRange("% screen width", 1, 0, 100);
+		POS_Y = builder.defineInRange("% screen height", 1, 0, 100);
 		builder.pop();
 		
 		builder.push("Customise coord values");

@@ -13,6 +13,14 @@ public class CoordHudOverlay extends GuiComponent {
 	
 	private static boolean found;
 	private static boolean first = true;
+	private static boolean bottom = false;
+	private static boolean right = false;
+	private static int w = 0;
+	private static int h = 0;
+	private static int posX = 0;
+	private static int posY = 0;
+	private static int percX = Config.POS_X.get();
+	private static int percY = Config.POS_Y.get();
 	private static String preX = "";
 	private static String preY = "";
 	private static String preZ = "";
@@ -30,24 +38,53 @@ public class CoordHudOverlay extends GuiComponent {
 	public void renderOverlay(PoseStack ps) {
 		
 		if (first) {
+			
+			if (Config.POS_VERTICAL.get().equals("BOTTOM")) {
+				
+				bottom = true;
+				
+			}
+			
+			if (Config.POS_HORIZONTAL.get().equals("RIGHT")) {
+				
+				right = true;
+				
+			}
+			
 			if (showXZ) {
+				
 				preX = Config.X_PRE_TEXT.get();
 				preZ = Config.Z_PRE_TEXT.get();
 				postX = Config.X_POST_TEXT.get();
 				postZ = Config.Z_POST_TEXT.get();
+				
 			}
+			
 			if (showY) {
+				
 				preY = Config.Y_PRE_TEXT.get();
+				
 			}
+			
 			if (showXZ && showY) {
+				
 				postY = Config.Y_POST_TEXT.get();
+				
 			}
+			
 			first = false;
+			
 		}
 		
 		Minecraft client = Minecraft.getInstance();
 		
 		if (client.options.hideGui || client.options.renderDebug) {
+			return;
+		}
+		
+		Entity player = client.getCameraEntity();
+		
+		if (player == null) {
 			return;
 		}
 		
@@ -73,10 +110,32 @@ public class CoordHudOverlay extends GuiComponent {
 			}
 		}
 		
-		Entity player = client.getCameraEntity();
-		
-		if (player == null) {
-			return;
+		if (client.screen != null) {
+			if (client.screen.height != h) {
+				
+				h = client.screen.height;
+				posY = (h*percY)/100;
+				
+				if (bottom) {
+					
+					posY = h - posY;
+					
+				}
+				
+			}
+			
+			if (client.screen.width != w) {
+				
+				w = client.screen.width;
+				posX = (h*percX)/100;
+
+				if (right) {
+					
+					posX = h - posX;
+					
+				}
+				
+			}
 		}
 		
 		if (showY) {
@@ -93,7 +152,7 @@ public class CoordHudOverlay extends GuiComponent {
 		
 		String text = preX + shownX + postX + preY + shownY + postY + preZ + shownZ + postZ;
 		
-		client.font.drawShadow(ps, text, 5, 5, 16777215);
+		client.font.drawShadow(ps, text, posX, posY, 16777215);
 		
 	}
 }
