@@ -23,10 +23,9 @@ public class ClientEvents {
 		
 		@SubscribeEvent
 		public static void catchChatCoords(ClientChatReceivedEvent e) {
-			String chat = e.getMessage().getString();
-			CustomCoords.LOGGER.info(chat);
+			String[] chat = e.getMessage().getString().split(">");
+			CustomCoords.LOGGER.info(chat[1]);
 			Pattern pattern = Pattern.compile("0");
-			// pattern.matcher(chat);
 		}
 	}
 }
