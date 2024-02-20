@@ -8,11 +8,11 @@ public class Config {
 	
 	public static ForgeConfigSpec.BooleanValue SHOW_XZ; // implemented
 	public static ForgeConfigSpec.BooleanValue SHOW_Y; // implemented
-	public static ForgeConfigSpec.BooleanValue XZ_CHUNK; // added
-	public static ForgeConfigSpec.BooleanValue XZ_NETHER; // added
-	public static ForgeConfigSpec.IntValue X_OFFSET; // added
-	public static ForgeConfigSpec.IntValue Y_OFFSET; // added
-	public static ForgeConfigSpec.IntValue Z_OFFSET; // added
+	public static ForgeConfigSpec.BooleanValue XZ_CHUNK; // implemented
+	public static ForgeConfigSpec.BooleanValue XZ_NETHER; // implemented
+	public static ForgeConfigSpec.IntValue X_OFFSET; // implemented
+	public static ForgeConfigSpec.IntValue Y_OFFSET; // implemented
+	public static ForgeConfigSpec.IntValue Z_OFFSET; // implemented
 	public static ForgeConfigSpec.IntValue POS_X; // implemented
 	public static ForgeConfigSpec.IntValue POS_Y; // implemented
 	public static ForgeConfigSpec.IntValue COLOR_PRE; // implemented

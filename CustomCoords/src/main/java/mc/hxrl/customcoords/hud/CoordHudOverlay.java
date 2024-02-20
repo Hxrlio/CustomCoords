@@ -21,6 +21,9 @@ public class CoordHudOverlay extends GuiComponent {
 	private static int posY = 0;
 	private static int percX;;
 	private static int percY;
+	private static int xOffset;
+	private static int yOffset;
+	private static int zOffset;
 	private static int[] colors = {0, 0, 0};
 	private static String preX = "";
 	private static String preY = "";
@@ -34,6 +37,8 @@ public class CoordHudOverlay extends GuiComponent {
 	private static String reqItem;
 	private static boolean showY;
 	private static boolean showXZ;
+	private static boolean chunkXZ;
+	private static boolean netherXZ;
 	private static DecimalFormat df;
 	
 	public void renderOverlay(PoseStack ps) {
@@ -42,12 +47,16 @@ public class CoordHudOverlay extends GuiComponent {
 			
 			percX = Config.POS_X.get();
 			percY = Config.POS_Y.get();
+			xOffset = Config.X_OFFSET.get();
+			yOffset = Config.Y_OFFSET.get();
+			zOffset = Config.Z_OFFSET.get();
 			colors[0] = Config.COLOR_PRE.get();
 			colors[1] = Config.COLOR_COORD.get();
 			colors[2] = Config.COLOR_POST.get();
 			reqItem = Config.REQ_ITEM.get();
 			showY = Config.SHOW_Y.get();
 			showXZ = Config.SHOW_XZ.get();
+			chunkXZ = Config.XZ_CHUNK.get();
 			df = new DecimalFormat(Config.COORD_PREC.get());
 			
 			if (Config.POS_VERTICAL.get().equals("BOTTOM")) {
@@ -153,16 +162,46 @@ public class CoordHudOverlay extends GuiComponent {
 		if (showY) {
 			
 			double y = player.getY();
-			shownY = df.format(y - 63);
+			shownY = df.format(y + yOffset);
 			
 		}
 		
 		if (showXZ) {
 			
-			double x = player.getX();
-			double z = player.getZ();
-			shownX = df.format(x);
-			shownZ = df.format(z);
+			double x;
+			double z;
+			
+			boolean nether = player.level.dimension().location().getPath().equals("nether");
+			
+			if (chunkXZ && (!nether || !netherXZ)) {
+				
+				x = player.chunkPosition().x;
+				z = player.chunkPosition().z;
+				
+			} else {
+				
+				x = player.getX();
+				z = player.getZ();
+				
+			}
+
+			if (nether && netherXZ) {
+				
+				if (chunkXZ) {
+					
+					x = x/2;
+					z = z/2;
+					
+				} else {
+					
+					x = x*8;
+					z = z*8;
+				}
+				
+			}
+			
+			shownX = df.format(x + xOffset);
+			shownZ = df.format(z + zOffset);
 			
 		}
 		
