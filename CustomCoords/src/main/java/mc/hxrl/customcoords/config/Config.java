@@ -6,28 +6,28 @@ public class Config {
 	
 	public static final ForgeConfigSpec CONFIG;
 	
-	public static ForgeConfigSpec.BooleanValue SHOW_XZ; // implemented
-	public static ForgeConfigSpec.BooleanValue SHOW_Y; // implemented
-	public static ForgeConfigSpec.BooleanValue XZ_CHUNK; // implemented
-	public static ForgeConfigSpec.BooleanValue XZ_NETHER; // implemented
-	public static ForgeConfigSpec.IntValue X_OFFSET; // implemented
-	public static ForgeConfigSpec.IntValue Y_OFFSET; // implemented
-	public static ForgeConfigSpec.IntValue Z_OFFSET; // implemented
-	public static ForgeConfigSpec.IntValue POS_X; // implemented
-	public static ForgeConfigSpec.IntValue POS_Y; // implemented
-	public static ForgeConfigSpec.IntValue COLOR_PRE; // implemented
-	public static ForgeConfigSpec.IntValue COLOR_COORD; // implemented
-	public static ForgeConfigSpec.IntValue COLOR_POST; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> REQ_ITEM; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> X_PRE_TEXT; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> Y_PRE_TEXT; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> Z_PRE_TEXT; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> X_POST_TEXT; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> Y_POST_TEXT; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> Z_POST_TEXT; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> COORD_PREC; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> POS_HORIZONTAL; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> POS_VERTICAL; // implemented
+	public static ForgeConfigSpec.BooleanValue SHOW_XZ;
+	public static ForgeConfigSpec.BooleanValue SHOW_Y;
+	public static ForgeConfigSpec.BooleanValue XZ_CHUNK;
+	public static ForgeConfigSpec.BooleanValue XZ_NETHER;
+	public static ForgeConfigSpec.IntValue X_OFFSET;
+	public static ForgeConfigSpec.IntValue Y_OFFSET;
+	public static ForgeConfigSpec.IntValue Z_OFFSET;
+	public static ForgeConfigSpec.IntValue POS_X;
+	public static ForgeConfigSpec.IntValue POS_Y;
+	public static ForgeConfigSpec.IntValue COLOR_PRE;
+	public static ForgeConfigSpec.IntValue COLOR_COORD;
+	public static ForgeConfigSpec.IntValue COLOR_POST;
+	public static ForgeConfigSpec.ConfigValue<String> REQ_ITEM;
+	public static ForgeConfigSpec.ConfigValue<String> X_PRE_TEXT;
+	public static ForgeConfigSpec.ConfigValue<String> Y_PRE_TEXT;
+	public static ForgeConfigSpec.ConfigValue<String> Z_PRE_TEXT;
+	public static ForgeConfigSpec.ConfigValue<String> X_POST_TEXT;
+	public static ForgeConfigSpec.ConfigValue<String> Y_POST_TEXT;
+	public static ForgeConfigSpec.ConfigValue<String> Z_POST_TEXT;
+	public static ForgeConfigSpec.ConfigValue<String> COORD_PREC;
+	public static ForgeConfigSpec.ConfigValue<String> POS_HORIZONTAL;
+	public static ForgeConfigSpec.ConfigValue<String> POS_VERTICAL;
 	
 	static {
 		
