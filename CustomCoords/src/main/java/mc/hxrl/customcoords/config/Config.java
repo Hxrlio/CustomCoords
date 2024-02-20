@@ -6,7 +6,7 @@ public class Config {
 	
 	public static final ForgeConfigSpec CONFIG;
 	
-	public static ForgeConfigSpec.BooleanValue SHOW_XZ; // added
+	public static ForgeConfigSpec.BooleanValue SHOW_XZ; // implemented
 	public static ForgeConfigSpec.BooleanValue SHOW_Y; // implemented
 	public static ForgeConfigSpec.BooleanValue XZ_CHUNK; // added
 	public static ForgeConfigSpec.BooleanValue XZ_NETHER; // added
@@ -19,12 +19,12 @@ public class Config {
 	public static ForgeConfigSpec.IntValue COLOR_COORD; // added
 	public static ForgeConfigSpec.IntValue COLOR_POST; // added
 	public static ForgeConfigSpec.ConfigValue<String> REQ_ITEM; // implemented
-	public static ForgeConfigSpec.ConfigValue<String> X_PRE_TEXT; // added
-	public static ForgeConfigSpec.ConfigValue<String> Y_PRE_TEXT; // added
-	public static ForgeConfigSpec.ConfigValue<String> Z_PRE_TEXT; // added
-	public static ForgeConfigSpec.ConfigValue<String> X_POST_TEXT; // added
-	public static ForgeConfigSpec.ConfigValue<String> Y_POST_TEXT; // added
-	public static ForgeConfigSpec.ConfigValue<String> Z_POST_TEXT; // added
+	public static ForgeConfigSpec.ConfigValue<String> X_PRE_TEXT; // implemented
+	public static ForgeConfigSpec.ConfigValue<String> Y_PRE_TEXT; // implemented
+	public static ForgeConfigSpec.ConfigValue<String> Z_PRE_TEXT; // implemented
+	public static ForgeConfigSpec.ConfigValue<String> X_POST_TEXT; // implemented
+	public static ForgeConfigSpec.ConfigValue<String> Y_POST_TEXT; // implemented
+	public static ForgeConfigSpec.ConfigValue<String> Z_POST_TEXT; // implemented
 	public static ForgeConfigSpec.ConfigValue<String> COORD_PREC; // implemented
 	
 	static {
@@ -68,8 +68,8 @@ public class Config {
 		X_PRE_TEXT = builder.define("Text before X", "");
 		Y_PRE_TEXT = builder.define("Text before Y", "");
 		Z_PRE_TEXT = builder.define("Text before Z", "");
-		X_POST_TEXT = builder.define("Text after X", " ");
-		Y_POST_TEXT = builder.define("Text after Y", " ");
+		X_POST_TEXT = builder.define("Text after X", ", ");
+		Y_POST_TEXT = builder.define("Text after Y", ", ");
 		Z_POST_TEXT = builder.define("Text after Z", "");
 		builder.pop();
 	}
