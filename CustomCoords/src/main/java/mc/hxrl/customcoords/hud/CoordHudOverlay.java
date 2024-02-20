@@ -13,6 +13,7 @@ public class CoordHudOverlay extends GuiComponent {
 	
 	private static boolean found;
 	private static String reqItem = Config.REQ_ITEM.get();
+	private static DecimalFormat df = new DecimalFormat(Config.COORD_PREC.get());
 	
 	public void renderOverlay(PoseStack ps) {
 		
@@ -49,8 +50,6 @@ public class CoordHudOverlay extends GuiComponent {
 		if (player == null) {
 			return;
 		}
-		
-		DecimalFormat df = new DecimalFormat("0");
 		
 		double y = player.getY();
 		String shownY = df.format(y - 63);

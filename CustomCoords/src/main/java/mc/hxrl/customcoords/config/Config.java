@@ -25,7 +25,7 @@ public class Config {
 	public static ForgeConfigSpec.ConfigValue<String> X_POST_TEXT; // added
 	public static ForgeConfigSpec.ConfigValue<String> Y_POST_TEXT; // added
 	public static ForgeConfigSpec.ConfigValue<String> Z_POST_TEXT; // added
-	public static ForgeConfigSpec.ConfigValue<String> COORD_PREC; // added
+	public static ForgeConfigSpec.ConfigValue<String> COORD_PREC; // implemented
 	
 	static {
 		
