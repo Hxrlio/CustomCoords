@@ -19,8 +19,9 @@ public class CoordHudOverlay extends GuiComponent {
 	private static int h = 0;
 	private static int posX = 0;
 	private static int posY = 0;
-	private static int percX = Config.POS_X.get();
-	private static int percY = Config.POS_Y.get();
+	private static int percX;;
+	private static int percY;
+	private static int[] colors = {0, 0, 0};
 	private static String preX = "";
 	private static String preY = "";
 	private static String preZ = "";
@@ -30,14 +31,24 @@ public class CoordHudOverlay extends GuiComponent {
 	private static String shownY = "";
 	private static String shownX = "";
 	private static String shownZ = "";
-	private static String reqItem = Config.REQ_ITEM.get();
-	private static boolean showY = Config.SHOW_Y.get();
-	private static boolean showXZ = Config.SHOW_XZ.get();
-	private static DecimalFormat df = new DecimalFormat(Config.COORD_PREC.get());
+	private static String reqItem;
+	private static boolean showY;
+	private static boolean showXZ;
+	private static DecimalFormat df;
 	
 	public void renderOverlay(PoseStack ps) {
 		
 		if (first) {
+			
+			percX = Config.POS_X.get();
+			percY = Config.POS_Y.get();
+			colors[0] = Config.COLOR_PRE.get();
+			colors[1] = Config.COLOR_COORD.get();
+			colors[2] = Config.COLOR_POST.get();
+			reqItem = Config.REQ_ITEM.get();
+			showY = Config.SHOW_Y.get();
+			showXZ = Config.SHOW_XZ.get();
+			df = new DecimalFormat(Config.COORD_PREC.get());
 			
 			if (Config.POS_VERTICAL.get().equals("BOTTOM")) {
 				
@@ -136,23 +147,39 @@ public class CoordHudOverlay extends GuiComponent {
 				}
 				
 			}
+			
 		}
 		
 		if (showY) {
+			
 			double y = player.getY();
 			shownY = df.format(y - 63);
+			
 		}
 		
 		if (showXZ) {
+			
 			double x = player.getX();
 			double z = player.getZ();
 			shownX = df.format(x);
 			shownZ = df.format(z);
+			
 		}
 		
-		String text = preX + shownX + postX + preY + shownY + postY + preZ + shownZ + postZ;
+		String[] text = {preX, shownX, postX, preY, shownY, postY, preZ, shownZ, postZ};
+		int rollX = posX;
 		
-		client.font.drawShadow(ps, text, posX, posY, 16777215);
+		for (int i = 0; i < 9; i++) {
+			
+			if (!text[i].equals("")) {
+				
+				client.font.drawShadow(ps, text[i], rollX, posY, colors[i % 3]);
+				rollX = rollX + client.font.width(text[i]);
+				
+			}
+			
+		}
 		
 	}
+	
 }
