@@ -171,7 +171,9 @@ public class CoordHudOverlay extends GuiComponent {
 			double x;
 			double z;
 			
-			boolean nether = player.level.dimension().location().getPath().equals("nether");
+			String dim = player.level.dimension().location().getPath();
+			boolean overworld = dim.equals("overworld");
+			boolean nether = dim.equals("nether");
 			
 			if (chunkXZ && (!nether || !netherXZ)) {
 				
@@ -200,8 +202,28 @@ public class CoordHudOverlay extends GuiComponent {
 				
 			}
 			
-			shownX = df.format(x + xOffset);
-			shownZ = df.format(z + zOffset);
+			double xCalc;
+			double zCalc;
+			
+			if (overworld) {
+				
+				xCalc = x + xOffset;
+				zCalc = z + zOffset;
+				
+			} else if (nether) {
+				
+				xCalc = x + (xOffset)/8;
+				zCalc = z + (zOffset)/8;
+				
+			} else {
+				
+				xCalc = x;
+				zCalc = z;
+				
+			}
+			
+			shownX = df.format(x);
+			shownZ = df.format(z);
 			
 		}
 		
