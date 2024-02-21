@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import mc.hxrl.customcoords.CustomCoords;
+import mc.hxrl.customcoords.commands.CustomCoordCommand;
 import mc.hxrl.customcoords.config.Config;
 import mc.hxrl.customcoords.util.CoordTranslate;
 import net.minecraft.Util;
@@ -14,6 +14,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
+import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -76,6 +77,12 @@ public class ClientEvents {
 				client.gui.getChat().addMessage(message);
 				
 			}
+		}
+		
+		@SubscribeEvent
+		public static void registerCommands(RegisterClientCommandsEvent e) {
+			CustomCoordCommand.register(e.getDispatcher());
+			
 		}
 	}
 }
