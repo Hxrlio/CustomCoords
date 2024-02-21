@@ -1,7 +1,5 @@
 package mc.hxrl.customcoords.util;
 
-import java.util.List;
-
 import mc.hxrl.customcoords.config.Config;
 
 public class CoordTranslate {
