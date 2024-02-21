@@ -222,8 +222,8 @@ public class CoordHudOverlay extends GuiComponent {
 				
 			}
 			
-			shownX = df.format(x);
-			shownZ = df.format(z);
+			shownX = df.format(xCalc);
+			shownZ = df.format(zCalc);
 			
 		}
 		
