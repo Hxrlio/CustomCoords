@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import mc.hxrl.customcoords.CustomCoords;
+import mc.hxrl.customcoords.config.Config;
 import mc.hxrl.customcoords.util.CoordTranslate;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -33,6 +34,10 @@ public class ClientEvents {
 		
 		@SubscribeEvent
 		public static void catchChatCoords(ClientChatReceivedEvent e) {
+			
+			if (!Config.READ_CHAT.get()) {
+				return;
+			}
 			
 			if (e.getSenderUUID() == Util.NIL_UUID) {
 				return;

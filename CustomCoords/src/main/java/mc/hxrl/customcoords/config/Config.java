@@ -10,6 +10,7 @@ public class Config {
 	public static ForgeConfigSpec.BooleanValue SHOW_Y;
 	public static ForgeConfigSpec.BooleanValue XZ_CHUNK;
 	public static ForgeConfigSpec.BooleanValue XZ_NETHER;
+	public static ForgeConfigSpec.BooleanValue READ_CHAT;
 	public static ForgeConfigSpec.IntValue X_OFFSET;
 	public static ForgeConfigSpec.IntValue Y_OFFSET;
 	public static ForgeConfigSpec.IntValue Z_OFFSET;
@@ -38,6 +39,10 @@ public class Config {
 	}
 	
 	private static void setup(ForgeConfigSpec.Builder builder) {
+		
+		builder.push("Should this mod try to detect and translate chat coords?");
+		READ_CHAT = builder.define("true/false", true);
+		builder.pop();
 		
 		builder.push("Required item for coords to show (blank = none)");
 		REQ_ITEM = builder.define("Item", "minecraft:compass");
