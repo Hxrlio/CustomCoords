@@ -26,7 +26,6 @@ public class Config {
 	public static ForgeConfigSpec.ConfigValue<String> X_POST_TEXT;
 	public static ForgeConfigSpec.ConfigValue<String> Y_POST_TEXT;
 	public static ForgeConfigSpec.ConfigValue<String> Z_POST_TEXT;
-	public static ForgeConfigSpec.ConfigValue<String> COORD_PREC;
 	public static ForgeConfigSpec.ConfigValue<String> POS_HORIZONTAL;
 	public static ForgeConfigSpec.ConfigValue<String> POS_VERTICAL;
 	
@@ -71,7 +70,6 @@ public class Config {
 		builder.pop();
 		
 		builder.push("Customise coord visuals");
-		COORD_PREC = builder.define("Digit display of coords", "0");
 		COLOR_PRE = builder.defineInRange("Color of text before each coordinate", 16777215, 0, 16777215);
 		COLOR_COORD = builder.defineInRange("Color of coordinates", 16777215, 0, 16777215);
 		COLOR_POST = builder.defineInRange("Color of text after each coordinate", 16777215, 0, 16777215);

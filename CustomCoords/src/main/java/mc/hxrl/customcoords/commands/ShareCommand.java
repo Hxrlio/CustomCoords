@@ -1,10 +1,7 @@
 package mc.hxrl.customcoords.commands;
 
-import java.text.DecimalFormat;
-
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
-
 import mc.hxrl.customcoords.config.Config;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
@@ -14,8 +11,6 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.Entity;
 
 public class ShareCommand {
-	
-	private static DecimalFormat df = new DecimalFormat("0");
 	
 	static ArgumentBuilder<CommandSourceStack, ?> register() {
 		
@@ -77,9 +72,7 @@ public class ShareCommand {
 			return 0;
 		}
 		
-		String x = df.format(player.getX());
-		String z = df.format(player.getZ());
-		client.player.chat("(" + x + ", " + z + ")");
+		client.player.chat("(" + String.valueOf(player.getBlockX()) + ", " + String.valueOf(player.getBlockZ()) + ")");
 		
 		return 0;
 		

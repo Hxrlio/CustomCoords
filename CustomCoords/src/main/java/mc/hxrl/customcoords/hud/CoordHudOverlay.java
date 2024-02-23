@@ -1,8 +1,6 @@
 package mc.hxrl.customcoords.hud;
 
-import java.text.DecimalFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
-
 import mc.hxrl.customcoords.CustomCoords;
 import mc.hxrl.customcoords.config.Config;
 import net.minecraft.client.Minecraft;
@@ -39,7 +37,6 @@ public class CoordHudOverlay extends GuiComponent {
 	private static boolean showXZ;
 	private static boolean chunkXZ;
 	private static boolean netherXZ;
-	private static DecimalFormat df;
 	
 	public void renderOverlay(PoseStack ps) {
 		
@@ -57,7 +54,6 @@ public class CoordHudOverlay extends GuiComponent {
 			showY = Config.SHOW_Y.get();
 			showXZ = Config.SHOW_XZ.get();
 			chunkXZ = Config.XZ_CHUNK.get();
-			df = new DecimalFormat(Config.COORD_PREC.get());
 			
 			if (Config.POS_VERTICAL.get().equals("BOTTOM")) {
 				
@@ -160,16 +156,15 @@ public class CoordHudOverlay extends GuiComponent {
 		}
 		
 		if (showY) {
-			
-			double y = player.getY();
-			shownY = df.format(y + yOffset);
+			int y = player.getBlockY();
+			shownY = String.valueOf(y + yOffset);
 			
 		}
 		
 		if (showXZ) {
 			
-			double x;
-			double z;
+			int x;
+			int z;
 			
 			String dim = player.level.dimension().location().getPath();
 			boolean overworld = dim.equals("overworld");
@@ -182,8 +177,8 @@ public class CoordHudOverlay extends GuiComponent {
 				
 			} else {
 				
-				x = player.getX();
-				z = player.getZ();
+				x = player.getBlockX();
+				z = player.getBlockZ();
 				
 			}
 
@@ -202,28 +197,20 @@ public class CoordHudOverlay extends GuiComponent {
 				
 			}
 			
-			double xCalc;
-			double zCalc;
-			
 			if (overworld) {
 				
-				xCalc = x + xOffset;
-				zCalc = z + zOffset;
+				x = x + xOffset;
+				z = z + zOffset;
 				
 			} else if (nether) {
 				
-				xCalc = x + (xOffset)/8;
-				zCalc = z + (zOffset)/8;
-				
-			} else {
-				
-				xCalc = x;
-				zCalc = z;
+				x = x + (xOffset)/8;
+				z = z + (zOffset)/8;
 				
 			}
 			
-			shownX = df.format(xCalc);
-			shownZ = df.format(zCalc);
+			shownX = String.valueOf(x);
+			shownZ = String.valueOf(z);
 			
 		}
 		
