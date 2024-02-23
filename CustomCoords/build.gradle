@@ -145,6 +145,18 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+    exclusiveContent {
+    	forRepository {
+    		maven {
+    			name = "Modrinth"
+    			url = "https://api.modrinth.com/maven"
+    		}
+    	}
+    	forRepositories(fg.repository)
+    	filter {
+    		includeGroup "maven.modrinth"
+    	}
+    }
 }
 
 dependencies {
@@ -164,6 +176,7 @@ dependencies {
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    implementation fg.deobf("maven.modrinth:xaeros-minimap-fair:oygkJr5G")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
