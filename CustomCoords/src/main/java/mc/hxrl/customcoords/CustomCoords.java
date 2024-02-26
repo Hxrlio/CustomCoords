@@ -7,6 +7,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig.Type;
@@ -27,6 +28,17 @@ public class CustomCoords
     public static CoordHudOverlay OVERLAY;
     
     public static boolean CHECK_ITEM = false;
+    
+    public static boolean XAERO = false;
+    
+    public static int[] COLORS = {0, 0, 0};
+    
+	public static String PRE_X;
+	public static String PRE_Y;
+	public static String PRE_Z;
+	public static String POST_X;
+	public static String POST_Y;
+	public static String POST_Z;
 
     public CustomCoords()
     {
@@ -47,6 +59,22 @@ public class CustomCoords
     }
     
     private void setupClient(final FMLClientSetupEvent event) {
+    	
+    	COLORS[0] = Config.COLOR_PRE.get();
+    	COLORS[1] = Config.COLOR_COORD.get();
+    	COLORS[2] = Config.COLOR_POST.get();
+    	
+    	PRE_X = (Config.SHOW_XZ.get()) ? Config.X_PRE_TEXT.get() : "";
+    	POST_X = (Config.SHOW_XZ.get()) ? Config.X_POST_TEXT.get() : "";
+    	PRE_Z = (Config.SHOW_XZ.get()) ? Config.Z_PRE_TEXT.get() : "";
+    	POST_Z = (Config.SHOW_XZ.get()) ? Config.Z_POST_TEXT.get() : "";
+    	PRE_Y = (Config.SHOW_Y.get()) ? Config.Y_PRE_TEXT.get() : "";
+    	POST_Y = (Config.SHOW_XZ.get() && Config.SHOW_Y.get()) ? Config.Y_POST_TEXT.get() : "";
+    	
+    	ModList ml = ModList.get();
+		if (ml.isLoaded("xaerominimap") || ml.isLoaded("xaerominimapfair")) {
+			XAERO = true;
+		}
     	
     	if (!Registry.ITEM.getOptional(new ResourceLocation(Config.REQ_ITEM.get())).isEmpty()) {
     		CHECK_ITEM = true;

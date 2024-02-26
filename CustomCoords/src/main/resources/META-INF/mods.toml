@@ -38,3 +38,17 @@ A mod for customising the client side value of your coordinates whilst maintaini
     versionRange="[1.18.2,1.19)"
     ordering="AFTER"
     side="BOTH"
+
+[[dependencies.customcoords]]
+    modId = "xaerominimap"
+    mandatory = false
+    versionRange = "[23.3.3,)"
+    ordering = "AFTER"
+    side = "CLIENT"
+
+[[dependencies.customcoords]]
+    modId = "xaerominimapfair"
+    mandatory = false
+    versionRange = "[23.3.3,)"
+    ordering = "AFTER"
+    side = "CLIENT"

@@ -29,8 +29,9 @@ public class ClientEvents {
 		@SubscribeEvent
 		public static void renderHudOverlays(RenderGameOverlayEvent e) {
 			
-			CustomCoords.OVERLAY.renderOverlay(e.getMatrixStack());
-			
+			if (!CustomCoords.XAERO) {
+				CustomCoords.OVERLAY.renderOverlay(e.getMatrixStack());
+			}
 		}
 		
 		@SubscribeEvent
@@ -75,7 +76,6 @@ public class ClientEvents {
 				Component message = new TextComponent(CoordTranslate.translateTo3OW(finalMatches));
 				Minecraft client = Minecraft.getInstance();
 				client.gui.getChat().addMessage(message);
-				
 			}
 		}
 		
