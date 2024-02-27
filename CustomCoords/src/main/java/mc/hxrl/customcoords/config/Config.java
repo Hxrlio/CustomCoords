@@ -11,6 +11,7 @@ public class Config {
 	public static ForgeConfigSpec.BooleanValue XZ_CHUNK;
 	public static ForgeConfigSpec.BooleanValue XZ_NETHER;
 	public static ForgeConfigSpec.BooleanValue READ_CHAT;
+	public static ForgeConfigSpec.BooleanValue XAERO_INT;
 	public static ForgeConfigSpec.IntValue X_OFFSET;
 	public static ForgeConfigSpec.IntValue Y_OFFSET;
 	public static ForgeConfigSpec.IntValue Z_OFFSET;
@@ -53,6 +54,7 @@ public class Config {
 		builder.pop();
 		
 		builder.push("Where should they be on the screen?");
+		XAERO_INT = builder.define("Should coords display in Xaero when its installed?", true);
 		builder.comment("Relative to left or right of screen?");
 		POS_HORIZONTAL = builder.define("Valid Inputs: LEFT / RIGHT", "LEFT");
 		builder.comment("Relative to top or bottom of screen?");

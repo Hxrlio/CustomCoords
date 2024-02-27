@@ -29,7 +29,7 @@ public class ClientEvents {
 		@SubscribeEvent
 		public static void renderHudOverlays(RenderGameOverlayEvent e) {
 			
-			if (!CustomCoords.XAERO) {
+			if (!CustomCoords.XAERO || !Config.XAERO_INT.get()) {
 				CustomCoords.OVERLAY.renderOverlay(e.getMatrixStack());
 			}
 		}
