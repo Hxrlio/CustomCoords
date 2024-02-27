@@ -26,8 +26,12 @@ XZ coords being measured by the metre is unnecessarily precise in many cases, so
 
 This mod is able to translate coords written in chat to whatever system you're using. You can use /cc share <coords> (<coords> is optional, it will share your current coords otherwise) to send out coordinates from your system in their true in-game form.
 
+## Compatibility
+Integrates with [Xaero's Minimap](https://modrinth.com/mod/xaeros-minimap)
+Shouldn't have issues with any mod. Let me know if it does.
+
 ## Current stage?
 Currently awaiting review for the beta build. You can clone it off the github though.
 
 #### Who are you?
-I am Hxrl. I made Yellow Pack, a basic modpack I drew up for low-end gamers. I made a minor contribution to C4's Vein Mining, but that's where my connection to the modding scene ends. Essentially, I'm not anyone important. Just an autistic guy who will grew up with, learned how to socialise from, and obsessed over this game. Please feel free to chat to me @ hxrl on Discord, or wherever else you can find me.
+I am Hxrl. Minor contributor to [C4's Vein Mining](https://modrinth.com/mod/vein-mining). I made Yellow Pack, a basic modpack I drew up for low-end gamers. That's where my connection to the modding scene ends. Essentially, I'm not anyone important. Just an autistic guy who will grew up with, learned how to socialise from, and obsessed over this game. Please feel free to chat to me @ hxrl on Discord, or wherever else you can find me.
