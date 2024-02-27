@@ -18,8 +18,7 @@ import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("customcoords")
-public class CustomCoords
-{
+public class CustomCoords {
 	
 	public static final String MODID = "customcoords";
 	
@@ -40,11 +39,10 @@ public class CustomCoords
 	public static String POST_Y;
 	public static String POST_Z;
 
-    public CustomCoords()
-    {
+    public CustomCoords() {
+    	
         IEventBus mbus = FMLJavaModLoadingContext.get().getModEventBus();
         
-        mbus.addListener(this::setup);
         mbus.addListener(this::setupClient);
         
         MinecraftForge.EVENT_BUS.register(this);
@@ -52,10 +50,7 @@ public class CustomCoords
         OVERLAY = new CoordHudOverlay();
         
         ModLoadingContext.get().registerConfig(Type.CLIENT, Config.CONFIG, "customcoords.toml");
-    }
-
-    private void setup(final FMLCommonSetupEvent event) {
-    	
+        
     }
     
     private void setupClient(final FMLClientSetupEvent event) {
@@ -72,6 +67,7 @@ public class CustomCoords
     	POST_Y = (Config.SHOW_XZ.get() && Config.SHOW_Y.get()) ? Config.Y_POST_TEXT.get() : "";
     	
     	ModList ml = ModList.get();
+    	
 		if (ml.isLoaded("xaerominimap") || ml.isLoaded("xaerominimapfair")) {
 			XAERO = true;
 		}
@@ -79,14 +75,5 @@ public class CustomCoords
     	if (!Registry.ITEM.getOptional(new ResourceLocation(Config.REQ_ITEM.get())).isEmpty()) {
     		CHECK_ITEM = true;
     	}
-    	
-    }
-
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents
-    {
-        
     }
 }
