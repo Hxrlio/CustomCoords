@@ -5,7 +5,7 @@ Custom Coords Client-Side Minecraft Mod.
 No Questions have been asked.
 
 ## Where Mod?
-[Modrinth page](https://modrinth.com/project/customcoords) (Awaiting Review)
+[Modrinth page](https://modrinth.com/project/customcoords)
 
 ## Where complain Mod broken?
 [Custom Coords Issues](https://github.com/Hxrlio/CustomCoords/issues)
