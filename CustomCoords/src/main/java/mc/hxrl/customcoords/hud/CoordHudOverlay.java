@@ -21,67 +21,63 @@ public class CoordHudOverlay extends GuiComponent {
 	public void renderOverlay(PoseStack ps) {
 		
 		Minecraft client = Minecraft.getInstance();
-		
-		if (client.options.hideGui || client.options.renderDebug) {
+		//if we shouldn't be showing right now, don't
+		if (client.options.hideGui || client.options.renderDebug || (client.screen == null)) {
 			return;
 		}
 		
 		Entity player = client.getCameraEntity();
-		
+		//if something gone wrong, abort
 		if (player == null) {
 			return;
 		}
 		
 		if (CustomCoords.CHECK_ITEM) {
-			
-			
-			
+			//if we need to look for the item, we haven't found it yet
 			found = false;
 			
 			for (int i = 0; i < 9; i++) {
-				
+				//but lets search the hotbar for it, 1 slot at a time
 				if (client.player.getInventory().getItem(i).getItem().getRegistryName().toString().equals(Config.REQ_ITEM.get())) {
-					
+					//if we found it we don't need to keep looking
 					found = true;
 					break;
 				
 				}
 				
 			}
-			
+			//if it's not there we don't need to render
 			if (!found) {
 				return;
 			}
 		}
-		
-		if (client.screen != null) {
-			if (client.screen.height != h) {
+		//if the screens changed size since we last figured out where we belong
+		if (client.screen.height != h) {
+			//then lets figure it out again
+			h = client.screen.height;
+			posY = (h*Config.POS_Y.get())/100;
 				
-				h = client.screen.height;
-				posY = (h*Config.POS_Y.get())/100;
-				
-				if (Config.POS_VERTICAL.get().equals("BOTTOM")) {
+			if (Config.POS_VERTICAL.get().equals("BOTTOM")) {
 					
-					posY = h - posY;
+				posY = h - posY;
 					
-				}
-				
 			}
-			
-			if (client.screen.width != w) {
 				
-				w = client.screen.width;
-				posX = (h*Config.POS_X.get())/100;
-
-				if (Config.POS_HORIZONTAL.get().equals("RIGHT")) {
-					
-					posX = h - posX;
-					
-				}
-				
-			}
-			
 		}
+			
+		if (client.screen.width != w) {
+				
+			w = client.screen.width;
+			posX = (h*Config.POS_X.get())/100;
+
+			if (Config.POS_HORIZONTAL.get().equals("RIGHT")) {
+					
+				posX = h - posX;
+					
+			}
+				
+		}
+		
 		
 		shownY = CoordLogic.coordCalcY(player.getBlockY());
 		
@@ -89,12 +85,14 @@ public class CoordHudOverlay extends GuiComponent {
 		
 		String[] text = {CustomCoords.PRE_X, shownXZ[0], CustomCoords.POST_X, CustomCoords.PRE_Y, shownY, CustomCoords.POST_Y, CustomCoords.PRE_Z, shownXZ[1], CustomCoords.POST_Z};
 		int rollX = posX;
-		
+		//go through all the pieces of the coords and add them to the render
 		for (int i = 0; i < 9; i++) {
-			
+			//but don't bother if it's an empty one
 			if (!text[i].equals("")) {
 				
 				client.font.drawShadow(ps, text[i], rollX, posY, CustomCoords.COLORS[i % 3]);
+				//rolling the x (screen coordinate) allows us to render different pieces separately
+				//(so they can have different colours) without having them improperly placed.
 				rollX = rollX + client.font.width(text[i]);
 				
 			}
