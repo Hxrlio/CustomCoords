@@ -22,7 +22,7 @@ public class CoordHudOverlay extends GuiComponent {
 		
 		Minecraft client = Minecraft.getInstance();
 		//if we shouldn't be showing right now, don't
-		if (client.options.hideGui || client.options.renderDebug || (client.screen == null)) {
+		if (client.options.hideGui || client.options.renderDebug) {
 			return;
 		}
 		
@@ -52,9 +52,9 @@ public class CoordHudOverlay extends GuiComponent {
 			}
 		}
 		//if the screens changed size since we last figured out where we belong
-		if (client.screen.height != h) {
+		if (client.getWindow().getHeight() != h) {
 			//then lets figure it out again
-			h = client.screen.height;
+			h = client.getWindow().getHeight();
 			posY = (h*Config.POS_Y.get())/100;
 				
 			if (Config.POS_VERTICAL.get().equals("BOTTOM")) {
@@ -65,14 +65,14 @@ public class CoordHudOverlay extends GuiComponent {
 				
 		}
 			
-		if (client.screen.width != w) {
+		if (client.getWindow().getWidth() != w) {
 				
-			w = client.screen.width;
-			posX = (h*Config.POS_X.get())/100;
+			w = client.getWindow().getWidth();
+			posX = (w*Config.POS_X.get())/100;
 
 			if (Config.POS_HORIZONTAL.get().equals("RIGHT")) {
 					
-				posX = h - posX;
+				posX = w - posX;
 					
 			}
 				

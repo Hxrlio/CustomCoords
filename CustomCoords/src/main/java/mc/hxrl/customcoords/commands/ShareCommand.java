@@ -6,10 +6,7 @@ import mc.hxrl.customcoords.config.Config;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.phys.Vec3;
 
 public class ShareCommand {
 	
@@ -30,7 +27,7 @@ public class ShareCommand {
 				.then(Commands.argument("x", IntegerArgumentType.integer())
 				.then(Commands.argument("y", IntegerArgumentType.integer())
 				.then(Commands.argument("z", IntegerArgumentType.integer())
-				//so translate x&z, as well as y, and drop that in the chat
+				//so translate x & z, as well as y, and drop that in the chat
 				.executes(ctx -> {
 					int[] i = translateXZ(IntegerArgumentType.getInteger(ctx, "x"), IntegerArgumentType.getInteger(ctx, "z"));
 					Minecraft client = Minecraft.getInstance();
