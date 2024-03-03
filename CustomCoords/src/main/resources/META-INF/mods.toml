@@ -1,7 +1,7 @@
 modLoader="javafml" #M
 loaderVersion="[40,)" #M
 license="GNU GPL v3, https://www.gnu.org/licenses/gpl-3.0.en.html" #M
-#issueTrackerURL="https://github.com/Hxrlio/CustomCoords/issues" #O
+issueTrackerURL="https://github.com/Hxrlio/CustomCoords/issues" #O
 
 [[mods]] #M
 modId="customcoords" #M
