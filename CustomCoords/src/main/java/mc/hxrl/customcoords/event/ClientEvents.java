@@ -42,7 +42,7 @@ public class ClientEvents {
 				return;
 			}
 			//if the server or a mod or a command sent the message then don't bother
-			if (e.getSenderUUID() == Util.NIL_UUID) {
+			if (e.getSenderUUID().equals(Util.NIL_UUID)) {
 				return;
 			}
 			//e.getMessage().getString() gives "<Player> Message".
