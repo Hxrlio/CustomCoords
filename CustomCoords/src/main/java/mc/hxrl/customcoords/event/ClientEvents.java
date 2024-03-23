@@ -48,6 +48,8 @@ public class ClientEvents {
 			//e.getMessage().getString() gives "<Player> Message".
 			//we do not care about the player, and don't want to accidentally grab "<liltimmy11> I am 12 years old" as coords (11,12).
 			//so we cut off the part of the message before the first ">", just leaving the actual message.
+			String test = e.getMessage().getContents();
+			CustomCoords.LOGGER.info("0: " + test);
 			String chat = e.getMessage().getString();
 			CustomCoords.LOGGER.info("1: " + chat);
 			chat = chat.split(">", 2)[1];
