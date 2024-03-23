@@ -11,6 +11,7 @@ import mc.hxrl.customcoords.util.CoordTranslate;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -48,13 +49,19 @@ public class ClientEvents {
 			//e.getMessage().getString() gives "<Player> Message".
 			//we do not care about the player, and don't want to accidentally grab "<liltimmy11> I am 12 years old" as coords (11,12).
 			//so we cut off the part of the message before the first ">", just leaving the actual message.
-			String test = e.getMessage().getContents();
-			String test2 = e.getMessage().toString();
-			CustomCoords.LOGGER.info("0.5: " + test2);
-			CustomCoords.LOGGER.info("0: " + test);
-			String chat = e.getMessage().getString();
-			CustomCoords.LOGGER.info("1: " + chat);
-			chat = chat.split(">", 2)[1];
+			Component raw = e.getMessage();
+			String chat = raw.getString();
+			String[] chatSplit = chat.split(">", 2);
+			if (chatSplit.length != 1) {
+				chat = chatSplit[1];
+			} else {
+				//if the message has a UUID (originates from a player) but lacks the "<Player>" part of the message,
+				//then we're going to hope the message is a waypoint share from Xaero, as they can get to the message first and remove the "<Player>" element.
+				//if it's something else this will error out but should do so safely. If something is doing that, please report it so I can address that unique instance.
+				//I could make this more robust, but the advantage of not doing that is that I get to find out when else these circumstances arise.
+				//if it is actually from Xaero, we can grab the coords from the hover of the "add" text without issue.
+				chat = raw.getStyle().getHoverEvent().getValue(HoverEvent.Action.SHOW_TEXT).getString();
+			}
 			Matcher matcher = pattern.matcher(chat);
 			//matches is all the numbers in the message
 			List<String> matches = new ArrayList<String>();
