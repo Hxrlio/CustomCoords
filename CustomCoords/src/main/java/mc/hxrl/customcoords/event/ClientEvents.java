@@ -48,7 +48,9 @@ public class ClientEvents {
 			//e.getMessage().getString() gives "<Player> Message".
 			//we do not care about the player, and don't want to accidentally grab "<liltimmy11> I am 12 years old" as coords (11,12).
 			//so we cut off the part of the message before the first ">", just leaving the actual message.
-			String chat = e.getMessage().getString().split(">", 2)[1];
+			String chat = e.getMessage().getString();
+			CustomCoords.LOGGER.info(chat);
+			chat = chat.split(">", 2)[1];
 			Matcher matcher = pattern.matcher(chat);
 			//matches is all the numbers in the message
 			List<String> matches = new ArrayList<String>();
